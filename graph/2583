@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun 23 17:03:00 2020
+
+@author: hihyun
+"""
+
+import sys
+sys.setrecursionlimit(10**6)
+
+def DFS(T,sp,w):
+    i=sp[0]
+    j=sp[1]
+    T[i][j]=1
+    w.append([i,j]) #visit
+    ##up
+    if i>0 and T[i-1][j]==-1:
+        DFS(T,[i-1,j],w)
+    #down
+    if i+1<N and T[i+1][j]==-1:
+        DFS(T,[i+1,j],w)
+    #left
+    if j>0 and T[i][j-1]==-1:
+        DFS(T,[i,j-1],w)
+    if j+1<M and T[i][j+1]==-1:
+        DFS(T,[i,j+1],w)
+    return w
+
+def solution(T):
+    result=[]
+    for i in range(N):
+        for j in range(M):
+            if T[i][j]==-1:
+                w=[]
+                result.append(len(DFS(T,[i,j],w)))
+    print(len(result))    
+    print(" ".join(list(map(str,sorted(result)))))
+
+
+N,M,K=map(int,sys.stdin.readline().split())
+T=[[-1 for i in range(M)] for j in range(N)]
+for k in range(K):
+    sn,sm,en,em=map(int,sys.stdin.readline().split())
+    for i in range(sn,en):
+        for j in range(sm,em):
+            T[j][i]=0
+solution(T)
+
