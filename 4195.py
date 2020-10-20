@@ -6,7 +6,7 @@ Created on Sun Jul  5 20:39:48 2020
 @author: hihyun
 """
 import sys
-def solution(name_set,set_list):
+def solution1(name_set,set_list):
     temp=[]
     for idx,s in enumerate(set_list):
         if len(s&name_set)!=0:
@@ -42,7 +42,44 @@ for i in range(num):
             except:
                 name_dict[k]=count
                 count+=1
-        print(solution({name_dict[name_li[0]],name_dict[name_li[1]]},set_list))
+        print(solution1({name_dict[name_li[0]],name_dict[name_li[1]]},set_list))
+
+"""
+import sys
+from collections import defaultdict
+
+class graph:
+    def __init__(self):
+        self.graph=defaultdict(list)
+    def linking(self,li):
+        self.graph[li[0]].append(li[1])
+        self.graph[li[1]].append(li[0])
+
+
+num=int(input())
+for i in range(num):
+    x=int(input())
+    g_dict=defaultdict(lambda:1)    
+    graph1=graph()
+    for j in range(x):
+        name_li=sys.stdin.readline().split()
+        #already linking
+        if name_li[1] in graph1.graph[name_li[0]]:
+            answer=g_dict[name_li[1]]
+        else:
+            #linking
+            g_dict[name_li[0]]+=g_dict[name_li[1]]
+            g_dict[name_li[1]]+=g_dict[name_li[0]]
+            answer=g_dict[name_li[0]]
+            graph1.linking(name_li)
+            for n in graph1.graph[name_li[0]]:
+                g_dict[n]=answer
+            for m in graph1.graph[name_li[1]]:
+                g_dict[n]=answer  
+        print(answer)
+
+
+"""
 
 
 
