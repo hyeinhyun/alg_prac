@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Oct 22 22:24:12 2020
+
+@author: hihyun
+"""
+
+N,K=map(int,input().split(' '))
+p=[0]*(K+1)
+min_val=1000000000000
+for i in range(N):
+    w,v=map(int,input().split(' '))
+    p[w]=v
+    if w<min_val:
+        min_val=w
+
+r=[0]*(K+1)
+for i in range(min_val,K+1):
+    if i==1:
+        r[i]=p[i]
+    else:
+        max=p[i]
+        for j in range(1,i//2+1):
+            temp=r[j]+r[i-j]
+            if temp>max:
+                max=temp
+
+        r[i]=max
+print(r[K])

@@ -18,7 +18,9 @@ def lcs1(X,Y):
                 T[i][j]=max(T[i-1][j],T[i][j-1])
     
     return T[n][m]
-
+X=str(input())
+Y=str(input())
+lcs1(X,Y)
 lcs1(["A","C","B"],["A","B","C"])
 
 
