@@ -23,4 +23,3 @@ else:
             answer+=answer+(heappop(a) if a else 0)
             print(answer)
     print(answer)
-            
