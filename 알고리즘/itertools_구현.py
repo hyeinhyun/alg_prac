@@ -6,7 +6,7 @@ Created on Sun Jan  3 09:09:39 2021
 @author: hihyun
 """
 
-from itertools import permutations,combinations,product
+from itertools import permutations,combinations,product,combinations_with_replacement
 
 list(permutations([1,2,3],2))
 list(product([1,2,3],repeat=3))
@@ -58,3 +58,23 @@ def pro_li(l,n):
 
 pro_li([1,2,3],2)
 list(product([1,2,3],repeat=2))
+
+
+def cwithr_li(l,n):
+    result=[]
+    if n==1:
+        for i in l:
+            result.append([i])
+    else:
+        for idx,i in enumerate(l):
+            sl=l[idx:]
+            for j in comb_li(sl,n-1):
+                result.append([i]+j)
+    return result
+
+cwithr_li([1,2,3],2)
+list(combinations_with_replacement([1,2,3],2))
+
+
+for i in product([1,2,3], [4,5], ['a']) :
+    print(i,end=" ")
