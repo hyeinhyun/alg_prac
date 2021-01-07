@@ -49,6 +49,7 @@ class Trie:
             
 
 x=Trie()
+x.insert('')
 x.insert('hyein')
 x.insert('hyewon')
 x.insert('yonghee')
@@ -56,3 +57,4 @@ x.insert('kyeongjoon')
 x.search('hyein')
 x.search('hyeiw')
 x.starts_with('hye')
+x.search('')
