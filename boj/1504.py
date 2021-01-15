@@ -17,6 +17,8 @@ def dik(s,e,m):
     v_w[s]=0
     
     while q:
+        if v_w[cur_i]<cur_w:#더 작은것이 있으면 패스
+            continue
         for idx, i in enumerate(m[cur_i]):
             if cur_w+i<v_w[idx]:
                 heappush(q,(cur_w+i,idx))
